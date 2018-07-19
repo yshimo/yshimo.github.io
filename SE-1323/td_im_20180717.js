@@ -12,7 +12,7 @@ var _opts = {
   table : 'se_1323',
   clickTable : 'se_1323_clicks',
   tokenIntimateMerger : 'MOQPTLyxUnQxiIkb8Mzm7Q',
-  customParam: {login_id: 'shimo'}
+  customParam: {login_id: 'shimo'},
   trackClicks : true,
   trackCrossDomain : true,
 };
