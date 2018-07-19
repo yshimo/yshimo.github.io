@@ -6,7 +6,7 @@ var _opts = {
   initParams : {
     host: 'in.treasuredata.com',
     writeKey: '9245/36083a629905e1319ef47f071c5d06ff870ec9a4',
-    database: 'test_db'
+    database: 'test_db',
     startInSignedMode: true
   },
   table : 'se_1323',
