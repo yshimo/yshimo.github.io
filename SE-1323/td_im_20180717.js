@@ -10,6 +10,7 @@
     this.success = this._prepareSuccessCallback(o.successCallback || []);
     this.fail = o.errorCallback || undefined;
     this.table = o.table;
+    this.clickTable = o.clickTable || 'clicks';
     this.trackClicks = o.trackClicks || false;
     this.trackCrossDomain = o.trackCrossDomain || false;
     this.id = 'tdw_' + Math.random().toString(36).substring(7);
@@ -20,11 +21,6 @@
       'funcs' : [],
       'cnt' : 0
     };
-    if (o.clickTable) {
-      this.clickTable = o.clickTable;
-    } else {
-      this.clickTable = 'clicks';
-    }
 
     var td = new w[t](o.initParams);
     td.set(this.table, this.customParam);
