@@ -115,7 +115,7 @@ var _opts = {
     startInSignedMode: true
   },
   table : 'se_1323',
-  tableName : 'se_1323_clicks',
+  clickTable : 'se_1323_clicks',
   tokenIntimateMerger : 'MOQPTLyxUnQxiIkb8Mzm7Q',
   customParam: {login_id: 'shimo'},
   trackClicks : true,
