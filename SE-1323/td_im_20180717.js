@@ -25,8 +25,9 @@
     var td = new w[t](o.initParams);
     td.set(this.table, this.customParam);
     if (this.trackClicks) {
-      td.set(this.clickTable, this.customParam);
+      //td.set(this.clickTable, this.customParam);
       //td.set('$global', this.customParam);
+      td.set('$global','user_id','shimo');
       td.trackClicks({tableName: this.clickTable});
     }
     if (this.trackCrossDomain) {
