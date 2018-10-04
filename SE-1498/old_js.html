@@ -1,0 +1,27 @@
+<!DOCTYPE html><html>
+<head>
+<script src="//cdn.jsdelivr.net/fingerprintjs2/1.4.4/fingerprint2.min.js"></script>
+<script type="text/javascript">
+!function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["addRecord","set","trackEvent","trackPageview","trackClicks","ready"],a=0;a<s.length;a++){var c=s[a];e[t].prototype[c]=r(c)}var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/1.7.1/td.min.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(n,i)}}("Treasure",this);
+var _tdOptions = {
+  initParams : {
+    host: 'in.treasuredata.com',
+    writeKey: '9245/36083a629905e1319ef47f071c5d06ff870ec9a4',
+    database: 'test_db'
+  },
+  table : 'se_1498_old_tag',
+  oid : 'fa94aa5ef87bf288',
+  customParam : { 'vncid':'krn01', 'vnuid1':'kwsid', 'vnuid2':'kirin_TK' },
+  trackCrossDomain : true
+};
+!function(a,b,c,d,e){var f=function(){};f.prototype.init=function(c){this.customParam=c.customParam||{},this.overwriteParam=c.overwriteParam||{},this.success=c.successCallback||void 0,this.fail=c.errorCallback||void 0,this.table=c.table,this.trackClicks=c.trackClicks||!1,this.trackCrossDomain=c.trackCrossDomain||!1,this.aoneSync=c.aoneSync||"//penta.a.one.impact-ad.jp/dd?oid=",this.oid=c.oid,this.id="tdi"+Math.random().toString(36).substring(7);var e=new b[a](c.initParams);return this.trackClicks&&e.trackClicks(),this.trackCrossDomain&&e.set("$global","td_global_id","td_global_id"),e.set(this.table,this.customParam),this.td=e,b[d].cb[this.id]=this,this},f.prototype.boot=function(){this.createScript(this.buildSyncUrl())},f.prototype.createScript=function(a){var b=c.createElement("script");b.type="text/javascript",b.async=!0,b.src=a;var d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d)},f.prototype.buildSyncUrl=function(){return this.aoneSync+this.oid+"&rft=k&jsonp="+d+".cb."+this.id+".aoneCallback&tgsrc=td"},f.prototype.aoneCallback=function(a){a.aoneuid&&this.td.set(this.table,{aoneuid:a.aoneuid}),a.segmentIds&&this.td.set(this.table,{aone_segmentids:a.segmentIds});var b=this;(new Fingerprint2).get(function(a){b.td.set("$global","td_fingerprint_id",a),b.td.trackEvent(b.table,b.overwriteParam,b.success,b.fail)})},f.prototype.trackEvent=function(a,b,c){var d=this;return function(a,b,c){if("object"==typeof a)for(var e in a)a.hasOwnProperty(e)&&(d.overwriteParam[e]=a[e]);d.td.trackEvent(d.table,d.overwriteParam,b,c)}},b[d]={cb:{}};var g=(new f).init(e);b[d].trackEvent=g.trackEvent(),g.boot()}("Treasure",window,document,"TDAONE",_tdOptions);
+</script>
+</head>
+<title>Check SE-1498</title>
+<body>
+<font size="6">
+Check SE-1498
+</font>
+</body>
+</html>
+
