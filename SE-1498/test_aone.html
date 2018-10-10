@@ -1,0 +1,35 @@
+<!DOCTYPE html><html>
+<head>
+<script type="text/javascript">
+!function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["blockEvents","unblockEvents","setSignedMode","setAnonymousMode","resetUUID","addRecord","fetchGlobalID","set","trackEvent","trackPageview","trackClicks","ready"],n=0;n<s.length;n++){var c=s[n];e[t].prototype[c]=r(c)}var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/2.1.0/td.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)}}("Treasure",this);
+
+ /*ITM経由で設置する場合は不要*/
+!function(e,r,t,a){if(!e.a1tracker){var n=e.a1tracker={};n.VERSION="v0.4.2",n.queue=n.queue||[];for(var s=0;s<t.length;s++){var u=t[s];n[u]=n[u]||function(e){return function(){for(var r=arguments.length,t=Array(r),a=0;a<r;a++)t[a]=arguments[a];n.queue.push({name:e,arguments:t.slice()})}}(u)}var c=r.createElement("script"),i=r.getElementsByTagName("script")[0];c.async=!0,c.src="//img.ak.impact-ad.jp/ut/a1/tracking.min.js",i.parentNode.insertBefore(c,i)}}(window,document,["ready","send","sendEvent","setParams","initParams","sendCustomerId","getSegments","getUserId"]); 
+
+(function(){// Setup parameter(1-4) 
+var td = new Treasure({
+  host: 'in.treasuredata.com', 
+  writeKey: '9245/36083a629905e1319ef47f071c5d06ff870ec9a4', //1,TD API KEY 
+  database: 'test_db’, //2,TD Database Name ﬆartInSignedMode: true
+});
+var td_table_name = 'test_aone', //3,TD Table Name 
+oid = 'oid'; // 4,AudienceOne parameter (oid) 
+a1tracker.send(oid, function (err, jsonp){ var aoneuid = jsonp.aoneuid, segmentIds = jsonp.segments, aonesegments = jsonp.aonesegments; var data = {aoneid: aoneuid, aone_segmentids: segmentIds, td_global_id: 'td_global_id'}; if (aonesegments.demographic) data.aone_demographic = aonesegments.demographic; if (aonesegments.interest) data.aone_interest = aonesegments.interest; if (aonesegments.zipcode) { data.aone_zipcode_home = aonesegments.zipcode.home; data.aone_zipcode_work = aonesegments.zipcode.work; } td.set(td_table_name, data); td.trackPageview(td_table_name); }); })();
+</script>
+<script type="text/javascript">
+//var td = new Treasure({
+//  host: 'in.treasuredata.com', 
+//  writeKey: '9245/36083a629905e1319ef47f071c5d06ff870ec9a4', //1,TD API KEY 
+//  database: 'test_db’, //2,TD Database Name ﬆartInSignedMode: true
+//});
+td.trackEvent('test_aone_2',{})
+</script>
+</head>
+<title>Check SE-1498-janai</title>
+<body>
+<font size="6">
+Check SE-1498-janai
+</font>
+</body>
+</html>
+
