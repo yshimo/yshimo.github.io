@@ -10,7 +10,7 @@
 var td = new Treasure({
   host: 'in.treasuredata.com', 
   writeKey: '9245/36083a629905e1319ef47f071c5d06ff870ec9a4', //1,TD API KEY 
-  database: 'test_db’, //2,TD Database Name 
+  database: 'test_db', //2,TD Database Name 
   startInSignedMode: true
 });
 var td_table_name = 'test_aone', //3,TD Table Name 
@@ -21,7 +21,7 @@ a1tracker.send(oid, function (err, jsonp){ var aoneuid = jsonp.aoneuid, segmentI
 var td = new Treasure({
   host: 'in.treasuredata.com', 
   writeKey: '9245/36083a629905e1319ef47f071c5d06ff870ec9a4', //1,TD API KEY 
-  database: 'test_db’, //2,TD Database Name
+  database: 'test_db', //2,TD Database Name
   startInSignedMode: true
 });
 td.trackEvent('test_aone_2',{})
