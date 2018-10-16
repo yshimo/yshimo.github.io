@@ -59,25 +59,27 @@ var createImage = function(url) {
   document.body.appendChild(img);
 };
 
-var ttdCall = function () {
+var ttdCall = function (account) {
   // TTD Integration
-  var region = td.client.host.split('.')[0];
-  var account = (region === 'in' ? '':(region === 'tokyo' ? 'tokyo-':'idcf-')) + td.client.writeKey.split('/')[0];
+  //var region = td.client.host.split('.')[0];
+  //var account = (region === 'in' ? 'aws-':(region === 'tokyo' ? 'aws-tokyo-':'idcf-')) + td.client.writeKey.split('/')[0];
   var ttdUrl = 'match.adsrvr.org/track/cmf/generic?ttd_pid=vbyog0i&ttd_tpi=1&ttd_puid='+account;
   createImage(ttdUrl);
 };
 
-var dbmCall = function () {
+var dbmCall = function (account) {
   var tdClientId = td.client.track.uuid;
-  var region = td.client.host.split('.')[0];
-  var account = (region === 'in' ? 'aws-':(region === 'tokyo' ? 'aws-tokyo-':'idcf-')) + td.client.writeKey.split('/')[0];
+  //var region = td.client.host.split('.')[0];
+  //var account = (region === 'in' ? 'aws-':(region === 'tokyo' ? 'aws-tokyo-':'idcf-')) + td.client.writeKey.split('/')[0];
   var dbmUrl = 'cm.g.doubleclick.net/pixel?google_nid=treasuredata_dmp&google_cm&td_write_key=8151/fcd628065149d648b80f11448b4083528c0d8a91&td_global_id=td_global_id' + '&td_client_id=' + tdClientId + '&account=' + account + '&td_host=' + document.location.host;
   createImage(dbmUrl);
 };
 
 var successCallback = function () {
-  ttdCall();
-  dbmCall();
+  var region = td.client.host.split('.')[0];
+  var account = (region === 'in' ? 'aws-':(region === 'tokyo' ? 'aws-tokyo-':'idcf-')) + td.client.writeKey.split('/')[0];
+  ttdCall(account);
+  dbmCall(account);
 };
 
 // Enable device fingerprint
