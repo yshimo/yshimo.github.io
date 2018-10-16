@@ -1,0 +1,112 @@
+<!DOCTYPE html><html>
+<head>
+<!-- Contetentdata ver5.1 add DBM meta keywords -->
+<!-- Load finger print library -->
+<script src="//cdn.jsdelivr.net/fingerprintjs2/1.4.4/fingerprint2.min.js"></script>
+
+<!-- td-js-sdk -->
+<script>
+!function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["addRecord","set","trackEvent","trackPageview","trackClicks","ready"],a=0;a<s.length;a++){var c=s[a];e[t].prototype[c]=r(c)}var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/1.8.4/td.min.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(n,i)}}("Treasure",this);
+
+// Configure an instance for your database
+var td = new Treasure({
+  host: 'in.treasuredata.com',
+  writeKey: '9245/36083a629905e1319ef47f071c5d06ff870ec9a4',
+  database: 'test_db'
+});
+
+// Enable cross-domain tracking
+td.set('$global', 'td_global_id', 'td_global_id');
+
+// Enable click tracking
+//td.trackClicks();
+
+// get meta description
+var getmeta = function(k){
+  var metas = document.head.children;
+  var metaLength = metas.length;
+  for(var i = 0;i < metaLength;i++){
+    var proper = metas[i].getAttribute('name');
+    if(proper === k){
+      return  metas[i].content;
+    }
+  }
+  return '';
+};
+td.set('se_1563_pv', {td_description: getmeta('description')});
+td.set('se_1563_pv', {td_keyword: getmeta('keywords')});  
+
+// get meta article
+var getarticle = function(k){
+  var metas = document.head.children;
+  var metaLength = metas.length;
+  var rs = [];
+  for(var i = 0;i < metaLength;i++){
+    var proper = metas[i].getAttribute('property');
+    if(proper === k){
+      rs.push(metas[i].content);
+    }
+  }
+  return rs;
+};
+td.set('se_1563_pv', {td_article_tag: getarticle('article:tag')});
+td.set('se_1563_pv', {td_article_section: getarticle('article:section')});
+  
+var createImage = function(url) {
+  var img = document.createElement('img');
+  img.src = (('https:' == document.location.protocol) ? 'https://' : 'http://') + url;
+  img.width=1;img.height=1;img.style.display='none';
+  document.body.appendChild(img);
+};
+
+var ttdCall = function () {
+  // TTD Integration
+  var region = td.client.host.split('.')[0];
+  var account = (region === 'in' ? '':(region === 'tokyo' ? 'tokyo-':'idcf-')) + td.client.writeKey.split('/')[0];
+  var ttdUrl = 'match.adsrvr.org/track/cmf/generic?ttd_pid=vbyog0i&ttd_tpi=1&ttd_puid='+account;
+  createImage(ttdUrl);
+};
+
+var dbmCall = function () {
+  var tdClientId = td.client.track.uuid;
+  var region = td.client.host.split('.')[0];
+  var account = (region === 'in' ? 'aws-':(region === 'tokyo' ? 'aws-tokyo-':'idcf-')) + td.client.writeKey.split('/')[0];
+  var dbmUrl = 'cm.g.doubleclick.net/pixel?google_nid=treasuredata_dmp&google_cm&td_write_key=8151/fcd628065149d648b80f11448b4083528c0d8a91&td_global_id=td_global_id' + '&td_client_id=' + tdClientId + '&account=' + account + '&td_host=' + document.location.host;
+  createImage(dbmUrl);
+};
+
+var successCallback = function () {
+  ttdCall();
+  dbmCall();
+};
+
+// Enable device fingerprint
+new Fingerprint2().get(function (result) {
+  td.set('$global', 'td_fingerprint_id', result)
+  // Track pageview information to 'pageviews' table
+  td.trackPageview('se_1563_pv', successCallback);
+});
+
+// tracking of copied text (except for IE8 & IE9)
+if(document.addEventListener) {
+  document.addEventListener('copy', function(e) {
+    var selectedStr = window.getSelection().toString();
+    if (selectedStr) {
+      td.trackEvent('se_1563_copy_txt',{'selected_text':selectedStr});
+    }
+//    if (e.preventDefault) e.preventDefault();
+//    if (e.returnValue) e.returnValue = false;
+  },false);
+}
+
+</script>
+<!--END Contetentdata ver5.1 add DBM meta keywords -->
+</head>
+<title>Check SE-1563 new</title>
+<body>
+<font size="6">
+Check SE-1563 アイウエオ　かきくけこ
+</font>
+</body>
+</html>
+
