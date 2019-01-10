@@ -1,0 +1,30 @@
+<!DOCTYPE html><html>
+<head>
+<script type="text/javascript">
+!function() {
+  var id = 'undefined';
+  var a = document.cookie;
+  if (a) {
+    for (var c = a.split("; "), d = 0; d < c.length; d++)
+      if (a = c[d].split("="), a[0] === '_td') id = a[1];
+  }
+  if (id !== 'undefined') {
+    //var url = 'p.adsymptotic.com/d/px/?_pid=15924&_psign=eb1eb339bdafc9c2ee4584ca6136ecd9&_puuid=' + id + '&_redirect=' + encodeURIComponent(redirectUrl) + '&_rand=' + Math.random().toString(36).substring(7);
+    var url = 'https://in.treasuredata.com/postback/v3/event/test_db/test_sync?td_write_key=9245/36083a629905e1319ef47f071c5d06ff870ec9a4&td_global_id=td_global_id&td_client_id=' + id + '&account=aws-us-9245';
+    var img = document.createElement("img");
+    img.src = ("https:" == document.location.protocol ? "https://" : "http://") + url;
+    img.width = 1;
+    img.height = 1;
+    img.style.display = "none";
+    document.body.appendChild(img);
+  }
+}();
+</script>
+</head>
+<title>Check SE-1800</title>
+<body>
+<font size="6">
+SE-1800
+</font>
+</body>
+</html>
