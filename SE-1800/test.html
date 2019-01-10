@@ -8,13 +8,13 @@ SE-1800
 </font>
 <script type="text/javascript">
 !function() {
-  var id = 'undefined';
+  var id = 'dummy_id';
   var a = document.cookie;
   if (a) {
     for (var c = a.split("; "), d = 0; d < c.length; d++)
-      if (a = c[d].split("="), a[0] === '_td') id = a[1];
+      if (a = c[d].split("="), a[0] === '_td') {id = a[1];break;}
   }
-  if (id !== 'undefined') {
+  if (id !== 'dummy_id') {
     //var url = 'p.adsymptotic.com/d/px/?_pid=15924&_psign=eb1eb339bdafc9c2ee4584ca6136ecd9&_puuid=' + id + '&_redirect=' + encodeURIComponent(redirectUrl) + '&_rand=' + Math.random().toString(36).substring(7);
     var url = 'in.treasuredata.com/postback/v3/event/test_db/test_sync?td_write_key=9245/36083a629905e1319ef47f071c5d06ff870ec9a4&td_global_id=td_global_id&td_client_id=' + id + '&account=aws-us-9245';
     var img = document.createElement("img");
