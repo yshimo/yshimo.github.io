@@ -1,0 +1,47 @@
+<!DOCTYPE html><html>
+<head>
+<script type="text/javascript">
+!function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["blockEvents","unblockEvents","setSignedMode","setAnonymousMode","resetUUID","addRecord","fetchGlobalID","set","trackEvent","trackPageview","trackClicks","ready"],n=0;n<s.length;n++){var c=s[n];e[t].prototype[c]=r(c)}var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/2.1/td.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)}}("Treasure",this);
+// Configure an instance for your database
+var td = new Treasure({
+  host: 'in.treasuredata.com', // use 'tokyo.in.treasuredata.com' in case of TD AWS Tokyo
+  writeKey: '9245/36083a629905e1319ef47f071c5d06ff870ec9a4',
+  database: 'test_db',
+  startInSignedMode: true
+});
+// Enable cross-domain tracking
+td.set('$global', 'td_global_id', 'td_global_id');
+
+//パラメタを定義
+var __LBCUA = new _LBCUA({
+  'name': "__LBCUA",//コールバック関数名1
+  'uid': "uwKLFbpexEi7VMK1",
+  'pw':  "88A1XvKFI0rx",
+  'gid': "TREASUREDATA"
+});
+
+//APIのURLを生成。<head>タグへ
+function _LBCUA(argv) {
+  var callback_func = argv.name + ".callback_ok";//コールバック関数名2
+  var api_url = 'https://ip2c.landscape.co.jp/lbcapi/ip2c_ua2.php?callback=callback';
+  var sc = document.createElement("script");
+  sc.type = "text/javascript";
+  sc.charset = "UTF-8";
+  sc.src = api_url + "&uid=" + argv.uid + "&pw=" + argv.pw + "&gid=" + argv.gid + "&callback_lsua=" + callback_func;
+  document.getElementsByTagName("head")[0].appendChild(sc);
+};
+
+__LBCUA.callback_ok = function(jsonp){
+  console.log(jsonp);//APIの値をコンソールへ出力
+  td.set("se_1823",{ls_office_id:jsonp.office_id,ls_company_name:jsonp.company_name,ls_company_url:jsonp.url,ls_corporate_number:jsonp.corporate_number});
+  td.trackPageview("se_1823")
+};
+</script>
+</head>
+<title>Check SE-1823</title>
+<body>
+<font size="6">
+SE-1823
+</font>
+</body>
+</html>
