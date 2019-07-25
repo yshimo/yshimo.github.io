@@ -1,0 +1,33 @@
+<html>
+<head>
+<script type="text/javascript">
+!function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["blockEvents","unblockEvents","setSignedMode","setAnonymousMode","resetUUID","addRecord","fetchGlobalID","set","trackEvent","trackPageview","trackClicks","ready"],n=0;n<s.length;n++){var c=s[n];e[t].prototype[c]=r(c)}var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/1.8.2/td.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)}}("Treasure",this);
+</script>
+
+<script type="text/javascript">
+  // Configure an instance for your database
+  var td = new Treasure({
+    host: 'development-eu01-eu-central-1.in.treasuredata.com',
+    writeKey: '1/3105fcf2fd33e2d8fe3b0d6f71b473a353a355cb',
+    database: 'shimo',
+    startInSignedMode: true
+  });
+  // Enable cross-domain tracking
+  td.set('$global', 'td_global_id', 'td_global_id');
+  // Track pageview information to 'pageviews' table
+  var scb = function (globalId) {
+    document.getElementById("td_global_id").innerText = "td_global_id = " + globalId;
+  };
+  var ecb = function () {};
+  var cb = function () {
+    td.fetchGlobalID(scb, ecb)
+  };
+  td.trackPageview('safari',cb);
+</script>
+</head>
+<body>
+td-js-sdk ver = 1.8.2
+<div id="td_global_id"></div>
+</div>
+</body>
+</html>
