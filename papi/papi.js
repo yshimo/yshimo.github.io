@@ -19,6 +19,12 @@ var success = function(audiences) {
   }
 
   console.log(segments);
+  if (segments[0] == 190846) {
+    alert('直近1分間に3回以上アクセスしました！（190846）');
+  } else if (segments[0] == 190845) {
+    alert('直近1分間に0回アクセスです！（190845）');
+  }
+  
 };
 
 var error = function(err) {
