@@ -2,7 +2,7 @@
 
 var td = new Treasure({
   host: 'in.treasuredata.com',
-  writeKey: '5891/dd111c183b193e90e6f0a3e195cd07e8b2ffe569',
+  writeKey: '10778/e059e2c3bd78f4773654fe583b2ae981e86a2fab',
   database: 'test_shimo',
   startInSignedMode: true
 });
