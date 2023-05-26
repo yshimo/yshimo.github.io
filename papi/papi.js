@@ -35,7 +35,8 @@ var fetchSegments = function(){
   td.fetchUserSegments({
     audienceToken: ['b9af8cd4-6a00-4083-9f2e-8ccc6c4bdec9'],
     keys: {
-      td_client_id: '23b56e29-8808-420d-b1d2-ce6f365f9dcc',
+      //td_client_id: '23b56e29-8808-420d-b1d2-ce6f365f9dcc',
+      td_client_id: '199ba0f4-1846-47b1-810e-8d594edfb8ed',
     }
   },success,error);
 };
